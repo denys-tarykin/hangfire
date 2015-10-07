@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Web.Api", "Hangfire\Hangfire.Web.Api.csproj", "{458F3F9A-BFA5-4065-815E-2FA7890D97AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Common", "Hangfire.Common\Hangfire.Common.csproj", "{C993FC35-6F8E-403E-8038-60C556A5D73D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Dao", "Hangfire.Dao\Hangfire.Dao.csproj", "{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Domain", "Hangfire.Domain\Hangfire.Domain.csproj", "{CAAEAB9E-0A67-4E43-9D21-CFEC505E6036}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{458F3F9A-BFA5-4065-815E-2FA7890D97AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458F3F9A-BFA5-4065-815E-2FA7890D97AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458F3F9A-BFA5-4065-815E-2FA7890D97AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458F3F9A-BFA5-4065-815E-2FA7890D97AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C993FC35-6F8E-403E-8038-60C556A5D73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C993FC35-6F8E-403E-8038-60C556A5D73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C993FC35-6F8E-403E-8038-60C556A5D73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C993FC35-6F8E-403E-8038-60C556A5D73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAEAB9E-0A67-4E43-9D21-CFEC505E6036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAEAB9E-0A67-4E43-9D21-CFEC505E6036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAEAB9E-0A67-4E43-9D21-CFEC505E6036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAEAB9E-0A67-4E43-9D21-CFEC505E6036}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
