@@ -4,17 +4,17 @@ using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace Hangfire.Common
 {
-    public interface ITransientDependencyInjector : ICallHandler
+    public interface ITransactionalMethodHandler : ICallHandler
     {
-         
+
     }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
-    public class TransientDependencyAttribute : HandlerAttribute
+    public class TransactionalAttribute : HandlerAttribute
     {
         public override ICallHandler CreateHandler(IUnityContainer container)
         {
-            return container.Resolve<ITransientDependencyInjector>();
+            return container.Resolve<ITransactionalMethodHandler>();
         }
     }
 }

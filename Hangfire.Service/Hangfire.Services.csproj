@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}</ProjectGuid>
+    <ProjectGuid>{7F988E09-B1C4-49A2-AE71-3A7AA888D385}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hangfire.Dao</RootNamespace>
-    <AssemblyName>Hangfire.Dao</AssemblyName>
+    <RootNamespace>Hangfire.Services</RootNamespace>
+    <AssemblyName>Hangfire.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,20 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.3.3.0\lib\net40\Common.Logging.dll</HintPath>
+    <Reference Include="Hangfire.Core, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.5.0\lib\net45\Hangfire.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Common.Logging.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Common.Logging.Core.3.3.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    <Reference Include="LogentriesCore, Version=2.6.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\logentries.core.2.6.10\lib\net40\LogentriesCore.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="LogentriesNLog, Version=2.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\logentries.nlog.2.4.9\lib\net40\LogentriesNLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -70,9 +66,25 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.1.2\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,38 +92,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\IDao.cs" />
-    <Compile Include="EntityFrameworkImpl\Common\DbConfigurationSupportedCustomExecutionStrategy.cs" />
-    <Compile Include="EntityFrameworkImpl\Common\TransactionalMethodHandler.cs" />
-    <Compile Include="EntityFrameworkImpl\DatabaseContext\CommonDbContext.cs" />
-    <Compile Include="EntityFrameworkImpl\DatabaseContext\HangfireStorageDbContext.cs" />
-    <Compile Include="EntityFrameworkImpl\Session\DbModelHolder.cs" />
-    <Compile Include="EntityFrameworkImpl\Session\DbSessionHolder.cs" />
-    <Compile Include="Migrations\201510071032291_InitMigration.cs" />
-    <Compile Include="Migrations\201510071032291_InitMigration.Designer.cs">
-      <DependentUpon>201510071032291_InitMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Api\ICalcService.cs" />
+    <Compile Include="Api\IDelayTaskService.cs" />
+    <Compile Include="Api\IFileSystemStorage.cs" />
+    <Compile Include="Impl\CalcService.cs" />
+    <Compile Include="Impl\DelayTaskService.cs" />
+    <Compile Include="Impl\FileSystemStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnityUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hangfire.Common\Hangfire.Common.csproj">
-      <Project>{C993FC35-6F8E-403E-8038-60C556A5D73D}</Project>
-      <Name>Hangfire.Common</Name>
+    <ProjectReference Include="..\Hangfire.Dao\Hangfire.Dao.csproj">
+      <Project>{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}</Project>
+      <Name>Hangfire.Dao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hangfire.Domain\Hangfire.Domain.csproj">
-      <Project>{CAAEAB9E-0A67-4E43-9D21-CFEC505E6036}</Project>
-      <Name>Hangfire.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510071032291_InitMigration.resx">
-      <DependentUpon>201510071032291_InitMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

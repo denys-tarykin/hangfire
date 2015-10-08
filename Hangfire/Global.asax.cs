@@ -1,4 +1,7 @@
 ﻿using System.Web.Http;
+using Hangfire;
+using Hangfire.Server;
+using Microsoft.Practices.Unity;
 
 namespace Hangfire.Web.Api
 {
@@ -7,7 +10,7 @@ namespace Hangfire.Web.Api
         protected void Application_Start()
         {
             System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
-
+            GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireStorageDbContext");
         }
     }
 }
