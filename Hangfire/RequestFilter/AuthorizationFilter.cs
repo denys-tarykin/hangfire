@@ -1,4 +1,4 @@
-﻿namespace Hangfire.Web.Api.RequestFilter
+﻿namespace HangfireApplication.Web.Api.RequestFilter
 {
     public class AuthorizationFilter
     {

@@ -16,7 +16,19 @@ namespace Hangfire.Dao.Migrations
                         email = c.String(),
                         password = c.String(),
                         entity_status = c.Int(nullable: false),
-                        row_version = c.Binary(),
+                        row_version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.id);
+            
+            CreateTable(
+                "dbo.assets",
+                c => new
+                    {
+                        id = c.Long(nullable: false, identity: true),
+                        name = c.String(),
+                        path = c.String(),
+                        entity_status = c.Int(nullable: false),
+                        row_version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -24,6 +36,7 @@ namespace Hangfire.Dao.Migrations
         
         public override void Down()
         {
+            DropTable("dbo.assets");
             DropTable("dbo.users");
         }
     }

@@ -12,7 +12,6 @@ namespace Hangfire.Dao.EntityFrameworkImpl.DatabaseContext
     {
         private static readonly ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        // DEPRECATED CONSTRUCTOR!
         public CommonDbContext()
             : base("name=CommonDbContext")
         {
@@ -27,8 +26,6 @@ namespace Hangfire.Dao.EntityFrameworkImpl.DatabaseContext
 
         private void Init()
         {
-            Configuration.LazyLoadingEnabled = false;
-            //Database.Log = s => _logger.Info(s);
             Database.SetInitializer<CommonDbContext>(null);
         }
 
@@ -45,6 +42,7 @@ namespace Hangfire.Dao.EntityFrameworkImpl.DatabaseContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserImpl>();
+            modelBuilder.Entity<AssetImpl>();
         }
     }
 }

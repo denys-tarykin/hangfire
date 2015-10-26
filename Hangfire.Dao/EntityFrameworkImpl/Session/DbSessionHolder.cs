@@ -12,9 +12,6 @@ namespace Hangfire.Dao.EntityFrameworkImpl.Session
 
         public CommonDbContext CommonDbContext { get; set; }
 
-        // DEPRECATED!
-        public HangfireStorageDbContext MetadataDbContext { get; set; }
-
         public object GetSession(Type type)
         {
             if (CommonDbContext == null)

@@ -48,7 +48,7 @@ namespace Hangfire.Services
         public static void RegisterDao(IUnityContainer unityContainer)
         {
             unityContainer.RegisterTypes(
-                AllClasses.FromLoadedAssemblies().Where(t => t.Namespace.StartsWith("SnapFileOnTrack.Dao.EntityFrameworkImpl.Dao") && !t.IsAbstract),
+                AllClasses.FromLoadedAssemblies().Where(t => t.Namespace.StartsWith("Hangfire.Dao.EntityFrameworkImpl.Dao") && !t.IsAbstract),
                 FromMatchingInterface, WithName.Default, WithLifetime.ContainerControlled,
                 getInjectionMembers: t => InterceptorSupport);
         }

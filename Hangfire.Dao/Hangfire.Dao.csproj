@@ -73,6 +73,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,11 +81,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\IAssetDao.cs" />
     <Compile Include="Common\IDao.cs" />
+    <Compile Include="Common\IGenericDao.cs" />
+    <Compile Include="Common\IGenericIdentifiableDao.cs" />
     <Compile Include="EntityFrameworkImpl\Common\DbConfigurationSupportedCustomExecutionStrategy.cs" />
+    <Compile Include="EntityFrameworkImpl\Common\EntityFrameworkDao.cs" />
+    <Compile Include="EntityFrameworkImpl\Common\GenericEntityFrameworkDao.cs" />
+    <Compile Include="EntityFrameworkImpl\Common\GenericEntityFrameworkDaoIdentifiableSupport.cs" />
     <Compile Include="EntityFrameworkImpl\Common\TransactionalMethodHandler.cs" />
+    <Compile Include="EntityFrameworkImpl\Dao\AssetDao.cs" />
     <Compile Include="EntityFrameworkImpl\DatabaseContext\CommonDbContext.cs" />
-    <Compile Include="EntityFrameworkImpl\DatabaseContext\HangfireStorageDbContext.cs" />
     <Compile Include="EntityFrameworkImpl\Session\DbModelHolder.cs" />
     <Compile Include="EntityFrameworkImpl\Session\DbSessionHolder.cs" />
     <Compile Include="Migrations\201510071032291_InitMigration.cs" />

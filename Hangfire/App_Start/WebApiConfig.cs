@@ -1,19 +1,29 @@
-﻿using System.Net.Http.Formatting;
+﻿using System;
+using System.Configuration;
+using System.Net.Http.Formatting;
+using System.Reflection;
 using System.Web.Http;
+using Common.Logging;
+using Hangfire.Dao.EntityFrameworkImpl.Session;
+using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Hangfire.Web.Api
+namespace HangfireApplication.Web.Api
 {
     public static class WebApiConfig
     {
+        private static IUnityContainer unityContainer;
+        private static readonly ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public static void Register(HttpConfiguration config)
-        {
+        { 
+            // Ioc Container configuration
+            unityContainer = UnityConfig.Register(config);
             // Web API configuration
             ConfigureDefaults(config);
             config.MapHttpAttributeRoutes();
-            // Ioc Container configuration
-            UnityConfig.Register(config);
+           
             // Web API routes                        
             RoutesConfig.Register(config);  
         }
@@ -34,6 +44,17 @@ namespace Hangfire.Web.Api
                 },
             };
             config.Formatters.Add(formatter);
+
+            try
+            {
+                var dbModelHolder = unityContainer.Resolve<DbModelHolder>();
+                dbModelHolder.ConnectionString =
+                    ConfigurationManager.ConnectionStrings["CommonDbContext"].ConnectionString;
+            }
+            catch (Exception e)
+            {
+                _logger.Error("dbModelHanlder Configuration failed", e);
+            }
         }
     }
 }

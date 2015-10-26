@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Hangfire.Web.Api
+namespace HangfireApplication.Web.Api
 {
     public class RoutesConfig
     {

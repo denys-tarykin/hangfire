@@ -13,12 +13,19 @@ namespace Hangfire.Common
         private static readonly ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public static readonly string SlotName = "_unityContainer";
         private LocalDataStoreSlot _slot = Thread.GetNamedDataSlot(SlotName);
+        private IUnityContainer _container;
+
         private IUnityContainer UnityContainer
         {
             get
             {
-                return (IUnityContainer)Thread.GetData(_slot);
+                return _container;
             }
+        }
+
+        public ThreadLocalDependencyInjector(IUnityContainer unityContainer)
+        {
+            _container = unityContainer;
         }
 
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)

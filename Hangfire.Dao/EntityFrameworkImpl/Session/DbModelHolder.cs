@@ -9,11 +9,11 @@ using Hangfire.Domain.EntityFrameworkImpl;
 
 namespace Hangfire.Dao.EntityFrameworkImpl.Session
 {
-    public class DbModelHolder
+    public class DbModelHolder 
     {
         private static readonly ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private DbCompiledModel _compiledModel;
+        private DbCompiledModel _compiledModel ;
         private DbConnection _dbConnection;
 
         public string ConnectionString { get; set; }
@@ -32,6 +32,7 @@ namespace Hangfire.Dao.EntityFrameworkImpl.Session
         {
             var modelBuilder = new DbModelBuilder();
             modelBuilder.Entity<UserImpl>();
+            modelBuilder.Entity<AssetImpl>();
             _logger.Info("Constructed DB model");
             var model = modelBuilder.Build(GetConnection());
             _logger.Info("Compiled DB model");

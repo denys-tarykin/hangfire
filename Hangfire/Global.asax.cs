@@ -1,9 +1,12 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using Hangfire;
 using Hangfire.Server;
+using Hangfire.SqlServer;
 using Microsoft.Practices.Unity;
+using GlobalConfiguration = Hangfire.GlobalConfiguration;
 
-namespace Hangfire.Web.Api
+namespace HangfireApplication.Web.Api
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -12,5 +15,6 @@ namespace Hangfire.Web.Api
             System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
             GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireStorageDbContext");
         }
+
     }
 }

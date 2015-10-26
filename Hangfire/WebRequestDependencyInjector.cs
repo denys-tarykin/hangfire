@@ -3,10 +3,11 @@ using System.Reflection;
 using System.Web;
 using Hangfire.Common;
 using Hangfire.Common.Exceptions;
+using HangfireApplication.Web.Api;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
 
-namespace Hangfire.Web.Api
+namespace HangfireApplication.Web.Api
 {
     public class WebRequestDependencyInjector : ITransientDependencyInjector
     {

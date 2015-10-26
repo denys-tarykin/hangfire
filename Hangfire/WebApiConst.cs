@@ -1,4 +1,4 @@
-﻿namespace Hangfire.Web.Api
+﻿namespace HangfireApplication.Web.Api
 {
     public class WebApiConst
     {

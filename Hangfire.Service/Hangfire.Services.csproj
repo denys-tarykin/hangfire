@@ -34,6 +34,10 @@
       <HintPath>..\packages\Hangfire.Core.1.5.0\lib\net45\Hangfire.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.5.0\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LogentriesCore, Version=2.6.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\logentries.core.2.6.10\lib\net40\LogentriesCore.dll</HintPath>
       <Private>True</Private>
@@ -85,6 +89,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,9 +111,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hangfire.Common\Hangfire.Common.csproj">
+      <Project>{c993fc35-6f8e-403e-8038-60c556a5d73d}</Project>
+      <Name>Hangfire.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hangfire.Dao\Hangfire.Dao.csproj">
       <Project>{1BA61F79-5EED-4095-A8E1-FE5F4CAE6F59}</Project>
       <Name>Hangfire.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hangfire.Domain\Hangfire.Domain.csproj">
+      <Project>{caaeab9e-0a67-4e43-9d21-cfec505e6036}</Project>
+      <Name>Hangfire.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,10 +8,10 @@ using System.Web.Http.Filters;
 using Common.Logging;
 using Hangfire.Common;
 using Hangfire.Common.Exceptions;
-using Hangfire.Web.Api.DtoModel.Common;
-using Hangfire.Web.Api.Exceptions;
+using HangfireApplication.Web.Api.DtoModel.Common;
+using HangfireApplication.Web.Api.Exceptions;
 
-namespace Hangfire.Web.Api.RequestFilter
+namespace HangfireApplication.Web.Api.RequestFilter
 {
     public class ExceptionActionFilter : ExceptionFilterAttribute
     {

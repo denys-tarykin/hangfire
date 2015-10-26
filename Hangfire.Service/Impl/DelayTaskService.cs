@@ -1,6 +1,8 @@
 ﻿
 using System;
+using System.Threading;
 using Hangfire.Services.Api;
+using Hangfire.SqlServer;
 using Microsoft.Practices.Unity;
 
 namespace Hangfire.Services.Impl
@@ -25,6 +27,13 @@ namespace Hangfire.Services.Impl
             var client = new BackgroundJobClient();
            // client.Create()
             client.Enqueue<IFileSystemStorage>(file => file.ApplyWatermark(picture));
+        }
+
+        public void StartServer()
+        {
+            
+            //Thread.Sleep(300000);
+            //server.Stop();
         }
     }
 }

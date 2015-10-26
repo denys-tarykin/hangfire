@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Hangfire.Common;
 using Hangfire.Common.Exceptions;
 
-namespace Hangfire.Web.Api.DtoModel.Common
+namespace HangfireApplication.Web.Api.DtoModel.Common
 {
     public class DtoModelOutgoing
     {

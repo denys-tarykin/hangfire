@@ -6,9 +6,10 @@ using System.Web.Http.Dependencies;
 using Common.Logging;
 using Hangfire.Common;
 using Hangfire.Dao.EntityFrameworkImpl.Session;
+using HangfireApplication.Web.Api;
 using Microsoft.Practices.Unity;
 
-namespace Hangfire.Web.Api
+namespace HangfireApplication.Web.Api
 {
     public class UnityResolver : IDependencyResolver
     {
@@ -58,14 +59,9 @@ namespace Hangfire.Web.Api
         public IDependencyScope BeginScope()
         {
             var childContainer = _container.CreateChildContainer();
-            registerTransientEntities(childContainer);
             HttpContext.Current.Items[WebApiConst.RequestUnityContainerAttributeName] = childContainer;
             return new UnityResolver(childContainer);
         }
 
-        private void registerTransientEntities(IUnityContainer transientContainer)
-        {
-            transientContainer.RegisterInstance(typeof(IDbSessionHolder), new DbSessionHolder());
-        }
     }
 }

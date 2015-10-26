@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Hangfire.Logging;
 using Hangfire.Services.Api;
@@ -20,14 +21,15 @@ namespace Hangfire.Server
         private static Logger logger ;
         static void Main()
         {
-           // log4net.Config.XmlConfigurator.Configure();
+           // log4net.Config.XmlConfigurator.Configure();00000000
             logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Info("Worker Host process has been started");
             unityContainer = UnityConfig.Register();
+            UnityConfig.ConfigureDefaults(unityContainer);
             var storage = new SqlServerStorage("HangfireStorageDbContext");
             var options = new BackgroundJobServerOptions()
             {
-                WorkerCount = 40
+                WorkerCount = 10
             }; 
             
             UnityJobActivator unityJobActivator = new UnityJobActivator(unityContainer);
@@ -35,23 +37,11 @@ namespace Hangfire.Server
             JobActivator.Current = unityJobActivator;
 
             GlobalJobFilters.Filters.Add(new ChildContainerPerJobFilterAttribute(unityJobActivator));
-            var start = GetTimeStamp(DateTime.Now) + TimeSpan.FromMinutes(6).TotalMilliseconds;
             var server = new BackgroundJobServer(options, storage);
-            while (GetTimeStamp(DateTime.Now) <= start)
-            {
-                server.Start();
-            }
+            server.Start();
+            Thread.Sleep(300000);
             server.Stop();
-            /*using (var server = new BackgroundJobServer(options, storage))
-            {
-                Console.WriteLine("Hangfire Server started. Press any key to exit...");
-                Console.ReadKey();
-            }*/
         }
 
-        public static int GetTimeStamp(DateTime date)
-        {
-           return (int) date.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-        }
     }
 }

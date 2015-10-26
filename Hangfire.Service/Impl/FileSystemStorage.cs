@@ -2,7 +2,12 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using Hangfire.Common;
+using Hangfire.Dao.Api;
+using Hangfire.Domain.Api;
+using Hangfire.Domain.EntityFrameworkImpl;
 using Hangfire.Services.Api;
+using Microsoft.Practices.Unity;
 
 namespace Hangfire.Services.Impl
 {
@@ -10,7 +15,10 @@ namespace Hangfire.Services.Impl
     {
         private string _location;
         private string _locationWithWotermark;
-        private string _watermarkText = "© ASPSnippets.com";
+        private string _watermarkText;
+        [Dependency]
+        public IAssetDao AssetDao { get; set; }
+
         public FileSystemStorage()
         {
             _location = @"C:\PictureStorage";
@@ -23,6 +31,11 @@ namespace Hangfire.Services.Impl
             return Directory.GetFiles(_location);
         }
 
+        [Transactional]
+        public virtual IAsset AddNewAsset(IAsset asset)
+        {
+            return AssetDao.Add(asset);
+        }
         public void ApplyWatermark(string picture)
         {
             using (Bitmap bmp = new Bitmap(picture, false))
@@ -34,7 +47,7 @@ namespace Hangfire.Services.Impl
 
                     //Set the Font and its size.
                     Font font = new System.Drawing.Font("Arial", 30, FontStyle.Bold, GraphicsUnit.Pixel);
-
+                     
                     //Determine the size of the Watermark text.
                     SizeF textSize = new SizeF();
                     textSize = grp.MeasureString(_watermarkText, font);
@@ -44,8 +57,15 @@ namespace Hangfire.Services.Impl
                     grp.DrawString(_watermarkText, font, brush, position);
                     
                 }
-                var filename = _locationWithWotermark + Guid.NewGuid().ToString() + ".jpeg";
+                var name = Guid.NewGuid().ToString();
+                var filename = _locationWithWotermark + name + ".jpeg";
+                var asset = new AssetImpl()
+                {
+                    Name = name,
+                    Path = filename
+                };
                 bmp.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
+                AssetDao.Add(asset, true);
             }
         }
     }

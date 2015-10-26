@@ -2,7 +2,7 @@
 using Hangfire.Common;
 using Hangfire.Common.Exceptions;
 
-namespace Hangfire.Web.Api.Exceptions
+namespace HangfireApplication.Web.Api.Exceptions
 {
     public class DtoModelIncomingValidationException : ManagedException
     {

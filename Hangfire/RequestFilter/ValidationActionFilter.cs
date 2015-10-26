@@ -9,11 +9,11 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using Common.Logging;
 using Hangfire.Logging;
-using Hangfire.Web.Api.DtoModel.Common;
-using Hangfire.Web.Api.Exceptions;
+using HangfireApplication.Web.Api.DtoModel.Common;
+using HangfireApplication.Web.Api.Exceptions;
 using ILog = Common.Logging.ILog;
 
-namespace Hangfire.Web.Api.RequestFilter
+namespace HangfireApplication.Web.Api.RequestFilter
 {
     public class ValidationActionFilter : ActionFilterAttribute
     {

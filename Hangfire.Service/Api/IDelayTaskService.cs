@@ -4,5 +4,6 @@
     {
         void Test(int a, int b);
         void ApplyWatermark(string picture);
+        void StartServer();
     }
 }

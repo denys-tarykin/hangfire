@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Api\Common\IDbDomain.cs" />
     <Compile Include="Api\Common\IIdentifiable.cs" />
+    <Compile Include="Api\IAsset.cs" />
     <Compile Include="Api\IUser.cs" />
+    <Compile Include="EntityFrameworkImpl\AssetImpl.cs" />
     <Compile Include="EntityFrameworkImpl\Common\BaseIdentifiableDbDomain.cs" />
     <Compile Include="EntityFrameworkImpl\UserImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hangfire.Web.Api.DtoModel.Common
+namespace HangfireApplication.Web.Api.DtoModel.Common
 {
     public class DtoConverter
     {

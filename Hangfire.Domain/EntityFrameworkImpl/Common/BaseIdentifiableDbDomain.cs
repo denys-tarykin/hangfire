@@ -10,8 +10,11 @@ namespace Hangfire.Domain.EntityFrameworkImpl.Common
         [Key]
         [Column("id")]
         public long Id { get; set; }
+
         [Column("entity_status")]
         public EntityStatus EntityStatus { get; set; }
+
+        [Timestamp]
         [Column("row_version")]
         public byte[] RowVersion { get; set; }
 
